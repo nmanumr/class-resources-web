@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import '@polymer/app-layout/app-layout.js';
 
 @Component({
   selector: 'app-root',
