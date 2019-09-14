@@ -1,0 +1,51 @@
+<mat-card>
+
+    <mat-card-title>Class Resources</mat-card-title>
+    <mat-card-subtitle>Please sign in to your account below.</mat-card-subtitle>
+
+    <form [formGroup]="form">
+
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Email" type="email">
+            <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="form.controls.email.hasError('required')">
+                Email is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput placeholder="Password" type="password">
+            <mat-error *ngIf="form.controls.password.hasError('required')">
+                Password is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-error *ngIf="serverError">{{ serverError }}</mat-error>
+
+        <mat-card-footer class="no-account-banner">
+            <mat-card-subtitle>
+                Don't have account? Signup <a routerLink="/signup">here</a>
+            </mat-card-subtitle>
+        </mat-card-footer>
+
+        <button (click)="performLogin()" [disabled]="!form.valid" color="primary" mat-raised-button type="submit">
+            Login
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <h2 class="headline">Login With:</h2>
+
+        <div class="provider-buttons">
+            <app-provider-button (click)="handleProvider(provider)" *ngFor="let provider of providers"
+                                 [provider]="provider">
+            </app-provider-button>
+        </div>
+    </form>
+
+</mat-card>

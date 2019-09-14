@@ -1,0 +1,68 @@
+:host {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+mat-card {
+    max-width: 320px;
+    margin: 20px auto;
+    border-radius: 8px;
+    padding: 40px;
+}
+
+mat-card-title,
+mat-card-subtitle {
+    text-align: center;
+}
+
+.full-width {
+    width: 100%;
+}
+
+mat-card-subtitle {
+    margin-bottom: 45px;
+}
+
+.no-account-banner {
+    float: right;
+    padding: 10px 20px;
+}
+
+mat-error {
+    font-size: 80%;
+    margin-bottom: 20px;
+}
+
+mat-divider {
+    margin: 25px 0 10px;
+    position: relative !important;
+}
+
+.google-classic {
+    color: #db4437 !important;
+}
+
+.facebook-classic {
+    color: #385899 !important;
+}
+
+.github-classic {
+    color: #000000 !important;
+}
+
+.phone-classic {
+    color: #02bd7e;
+}
+
+.provider-buttons {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.headline {
+    font-weight: 600;
+    font-size: 12px;
+    opacity: 0.7;
+}
