@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import '@polymer/app-layout/app-layout.js';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,4 @@ import '@polymer/app-layout/app-layout.js';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'class-resources-web';
 }

@@ -24,21 +24,24 @@ export interface ICredentials {
 @Injectable({
     providedIn: 'root'
 })
-export class AuthService {
+export class UserService {
 
 
     constructor(public afAuth: AngularFireAuth) {
     }
 
-    async loginWithEmail(email: string, pass: string) {
+    getCurrentUser() {
+        return this.afAuth.auth.currentUser;
+    }
+
+    async loginWithEmail(email: string, pass: string): Promise<UserCredential | null> {
         return await this.loginWithProvider(Provider.EmailAndPassword, {
             email: email,
             password: pass
         });
-        // return await this.afAuth.auth.signInWithEmailAndPassword(email, pass);
     }
 
-    async loginWithProvider(provider: Provider, credentials?: ICredentials) {
+    async loginWithProvider(provider: Provider, credentials?: ICredentials): Promise<UserCredential | any> {
         let signInResult: UserCredential | any;
 
         switch (provider) {

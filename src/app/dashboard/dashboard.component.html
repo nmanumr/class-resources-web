@@ -1,0 +1,43 @@
+<div class="container" [class.is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="toolbar">
+        <button mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="app-name">Class Resources</h1>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="drawer-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #drawer [mode]="mobileQuery.matches ? 'over' : 'side'"
+                     [fixedInViewport]="mobileQuery.matches" [opened]="!mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+                <a mat-list-item routerLink=".">
+                    <mat-icon>book</mat-icon>
+                    Courses
+                </a>
+            </mat-nav-list>
+            <mat-nav-list>
+                <a mat-list-item routerLink=".">
+                    <mat-icon>calendar_today</mat-icon>
+                    Timetable
+                </a>
+            </mat-nav-list>
+            <mat-nav-list>
+                <a mat-list-item routerLink=".">
+                    <mat-icon>person</mat-icon>
+                    Profile
+                </a>
+            </mat-nav-list>
+            <mat-nav-list>
+                <a mat-list-item routerLink=".">
+                    <mat-icon>exit_to_app</mat-icon>
+                    Logout
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

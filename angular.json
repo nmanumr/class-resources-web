@@ -22,11 +22,6 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              {
-                "glob": "{*loader.js,bundles/*.js}",
-                "input": "node_modules/@webcomponents/webcomponentsjs/",
-                "output": "node_modules/@webcomponents/webcomponentsjs"
-              },
                 {
                     "glob": "**/*",
                     "input": "node_modules/ngx-auth-firebaseui/assets/",
@@ -97,12 +92,7 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "{*loader.js,bundles/*.js}",
-                "input": "node_modules/@webcomponents/webcomponentsjs/",
-                "output": "node_modules/@webcomponents/webcomponentsjs"
-              }
+                "src/assets"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",

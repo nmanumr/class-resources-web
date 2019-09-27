@@ -6,9 +6,10 @@ import {LoginComponent} from './login/login.component';
 import {MatButtonModule, MatCardModule, MatDividerModule, MatIconModule, MatInputModule, MatSnackBarModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthComponent} from './auth.component';
-import {AuthService} from './auth.service';
+import {UserService} from './user.service';
 import {ProviderButtonComponent} from '../components/provider-button/provider-button.component';
 import {HttpClientModule} from '@angular/common/http';
+import {AngularFireAuthGuardModule} from '@angular/fire/auth-guard';
 
 
 @NgModule({
@@ -22,6 +23,8 @@ import {HttpClientModule} from '@angular/common/http';
         AuthRoutingModule,
         HttpClientModule,
 
+        AngularFireAuthGuardModule,
+
         FormsModule,
         ReactiveFormsModule,
 
@@ -33,7 +36,7 @@ import {HttpClientModule} from '@angular/common/http';
         MatDividerModule,
     ],
     providers: [
-        AuthService
+        UserService
     ],
     bootstrap: [AuthComponent]
 })

@@ -22,6 +22,10 @@ $custom-typography: mat-typography-config(
     src: url("./assets/fonts/Product-Sans-Bold.ttf") format('opentype');
 }
 
+:root {
+    --md-size: 768px;
+}
+
 html, body {
     height: 100%;
 }
@@ -46,4 +50,14 @@ paper-toolbar > .title {
 
 .capitalize {
     text-transform: capitalize;
+}
+
+.max-md {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--md-size);
+}
+
+.mat-line + .mat-line {
+    opacity: 0.7;
 }

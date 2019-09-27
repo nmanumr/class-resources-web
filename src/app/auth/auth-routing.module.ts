@@ -1,15 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
+import {canActivate, redirectLoggedInTo} from '@angular/fire/auth-guard';
 
+const redirectLoggedInToDashboard = redirectLoggedInTo(['dashboard']);
 
 const routes: Routes = [{
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'login'
-}, {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    ...canActivate(redirectLoggedInToDashboard)
 }];
 
 @NgModule({
