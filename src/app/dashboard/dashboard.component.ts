@@ -1,6 +1,7 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {ProfileService} from '../shared/services/profile.service';
+import {LoadingIndicatorService} from '../shared/services/loading-indicator.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -13,7 +14,12 @@ export class DashboardComponent implements OnDestroy {
 
     private mobileQueryListener: () => void;
 
-    constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private profileService: ProfileService) {
+    constructor(
+        changeDetectorRef: ChangeDetectorRef,
+        media: MediaMatcher,
+        private profileService: ProfileService,
+        public loader: LoadingIndicatorService
+    ) {
         this.mobileQuery = media.matchMedia('(max-width: 960px)');
         this.mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addListener(this.mobileQueryListener);

@@ -61,3 +61,8 @@ app-drawer-layout:not([narrow]) [drawer-toggle] {
 .centered .mat-tab-labels {
     justify-content: center;
 }
+
+
+.mat-sidenav .mat-list-item .mat-ripple {
+    border-radius: 0 25px 25px 0;
+}

@@ -1,0 +1,25 @@
+<div class="toolbar">
+    <ul class="breadcrumb">
+
+
+        <li *ngFor="let breadcrumb of this.breadcrumbs">
+            <ng-container *ngIf="breadcrumb.actions && breadcrumb.actions.length; else anchorLink">
+                <mat-menu #actions="matMenu">
+                    <button *ngFor="let action of breadcrumb.actions" mat-menu-item>{{action.label}}</button>
+                </mat-menu>
+
+                <a [matMenuTriggerFor]="actions">
+                    {{ breadcrumb.label }}
+                    <mat-icon>arrow_drop_down</mat-icon>
+                </a>
+            </ng-container>
+
+            <ng-template #anchorLink>
+                <a [routerLink]="breadcrumb.url">{{breadcrumb.label}}</a>
+            </ng-template>
+        </li>
+    </ul>
+    <div class="actions">
+
+    </div>
+</div>

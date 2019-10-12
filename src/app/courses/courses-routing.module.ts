@@ -11,11 +11,22 @@ const routes: Routes = [{
 }, {
     path: ':id',
     pathMatch: 'full',
-    component: CourseDetailComponent
+    component: CourseDetailComponent,
+    data: {
+        breadcrumbParser: (url: string) => {
+            const id = url.split('/').pop();
+            if (id.split('-').length === 2) {
+                return id.split('-')[1];
+            } else {
+                return id.split('--')[1];
+            }
+        }
+    }
 }];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class CoursesRoutingModule { }
+export class CoursesRoutingModule {
+}

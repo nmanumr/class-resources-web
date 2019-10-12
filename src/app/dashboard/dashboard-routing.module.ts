@@ -13,11 +13,14 @@ const routes: Routes = [{
         {
             path: '',
             pathMatch: 'full',
-            redirectTo: 'courses'
+            redirectTo: 'courses',
         },
         {
             path: 'courses',
-            loadChildren: '../courses/courses.module#CoursesModule'
+            loadChildren: '../courses/courses.module#CoursesModule',
+            data: {
+                breadcrumb: 'Courses'
+            }
         }
     ]
 }];

@@ -25,7 +25,6 @@ export class TextAvatarComponent {
     }
 
     getColor() {
-        console.log(`hsl(${this.hashCode(this.text) % 360}, 80, 45)`);
         return `hsl(${this.hashCode(this.text) % 360}, 80%, 45%)`;
     }
 
@@ -35,8 +34,10 @@ export class TextAvatarComponent {
             return hash;
         }
         for (let i = 0; i < str.length; i++) {
-            let chr = str.charCodeAt(i);
+            const chr = str.charCodeAt(i);
+            // tslint:disable-next-line:no-bitwise
             hash = ((hash << 5) - hash) + chr;
+            // tslint:disable-next-line:no-bitwise
             hash |= 0; // Convert to 32bit integer
         }
         return Math.abs(hash);

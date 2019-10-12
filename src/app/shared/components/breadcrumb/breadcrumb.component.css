@@ -1,0 +1,55 @@
+.toolbar {
+    display: flex;
+    border-bottom: 1px solid #dadce0;
+    position: sticky;
+    top: 0;
+    padding: 5px 0;
+    background-color: #fff;
+    z-index: 3;
+}
+
+.breadcrumb {
+    list-style: none;
+    padding: 0;
+    margin: 6px 2px;
+}
+
+.breadcrumb li {
+    display: inline-block;
+}
+
+.breadcrumb li a {
+    font-size: 18px;
+    border-radius: 5px;
+    line-height: 24px;
+    margin: 2px 0;
+    padding: 4px 8px 4px;
+    color: #3c4043;
+    opacity: .8;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.breadcrumb li a:hover {
+    background-color: #f1f3f4;
+}
+
+.breadcrumb li:not(:last-of-type):after {
+    content: "\e315";
+    font-family: "Material Icons";
+    font-size: 24px;
+    position: relative;
+    top: 5px;
+    opacity: .7;
+    margin-right: 2px;
+}
+
+.breadcrumb li:last-of-type {
+    opacity: 1;
+}
+
+
+a .mat-icon {
+    position: relative;
+    top: 6px;
+}

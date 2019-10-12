@@ -7,7 +7,7 @@ import {MatButtonModule, MatCardModule, MatDividerModule, MatIconModule, MatInpu
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthComponent} from './auth.component';
 import {UserService} from './user.service';
-import {ProviderButtonComponent} from '../components/provider-button/provider-button.component';
+import {ProviderButtonComponent} from '../shared/components/provider-button/provider-button.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AngularFireAuthGuardModule} from '@angular/fire/auth-guard';
 

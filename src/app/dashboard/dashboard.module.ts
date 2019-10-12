@@ -3,8 +3,17 @@ import {CommonModule} from '@angular/common';
 
 import {DashboardRoutingModule} from './dashboard-routing.module';
 import {DashboardComponent} from './dashboard.component';
-import {MatButtonModule, MatDividerModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+    MatListModule,
+    MatProgressBarModule,
+    MatSidenavModule,
+    MatToolbarModule
+} from '@angular/material';
 import {AngularFireAuthGuardModule} from '@angular/fire/auth-guard';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -21,6 +30,8 @@ import {AngularFireAuthGuardModule} from '@angular/fire/auth-guard';
         MatIconModule,
         MatButtonModule,
         MatDividerModule,
+        SharedModule,
+        MatProgressBarModule
     ],
 })
 export class DashboardModule {
