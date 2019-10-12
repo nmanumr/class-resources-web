@@ -23,13 +23,35 @@ mat-sidenav{
 
 .drawer-container {
     flex: 1;
+    background: #fff;
 }
 
 .is-mobile .drawer-container {
     flex: 1 0 auto;
 }
 
-.mat-list-item .mat-icon{
+.mat-sidenav {
+    padding-top: 20px;
+    padding-right: 10px;
+    border: none;
+}
+
+.mat-sidenav .mat-list-item {
+    height: 40px;
+    font-size: 14px;
+    border-radius: 0 25px 25px 0;
+    color: #202124;
+}
+
+.mat-sidenav .mat-list-item .mat-icon {
     margin-right: 7px;
     opacity: 0.8;
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+}
+
+.mat-sidenav .mat-list-item.active-link {
+    color: #1a73e8;
+    background: #e8f0fe;
 }

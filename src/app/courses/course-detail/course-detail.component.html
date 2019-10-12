@@ -1,0 +1,9 @@
+<div *ngIf="course" class="max-md">
+    <mat-tab-group class="centered">
+        <mat-tab label="Resources">
+            <app-resources [course]="courseId"></app-resources>
+        </mat-tab>
+        <mat-tab label="Tasks"> Content 2</mat-tab>
+        <mat-tab label="About"> Content 2</mat-tab>
+    </mat-tab-group>
+</div>

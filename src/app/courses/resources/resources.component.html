@@ -1,0 +1,13 @@
+<div *ngIf="this.resources && this.resources.length">
+    <mat-nav-list>
+        <ng-container *ngFor="let resource of this.resources; let i = index">
+            <mat-divider *ngIf="resource.isHeading && i != 0"></mat-divider>
+            <h3 *ngIf="resource.isHeading" mat-subheader>{{resource.name}}</h3>
+            <mat-list-item *ngIf="!resource.isHeading">
+                <!--                <text-avatar *ngIf="course.class" [text]="course.title" mat-list-icon></text-avatar>-->
+                <h4 mat-line>{{resource.name}}</h4>
+                <p mat-line>{{resource.date.toDate() | date}}</p>
+            </mat-list-item>
+        </ng-container>
+    </mat-nav-list>
+</div>

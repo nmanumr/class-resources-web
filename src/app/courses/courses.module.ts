@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { CoursesRoutingModule } from './courses-routing.module';
-import { CourseListComponent } from './course-list/course-list.component';
+import {CoursesRoutingModule} from './courses-routing.module';
+import {CourseListComponent} from './course-list/course-list.component';
 import {LoadRefsPipe} from '../shared/pipes/loadRefs.pipe';
 import {ReversePipe} from '../shared/pipes/reverse.pipe';
-import {MatIconModule, MatListModule} from '@angular/material';
+import {MatIconModule, MatListModule, MatTabsModule} from '@angular/material';
 import {TextAvatarComponent} from '../components/text-avatar/text-avatar.component';
+import {CourseDetailComponent} from './course-detail/course-detail.component';
+import {ResourcesComponent} from './resources/resources.component';
 
 
 @NgModule({
@@ -14,13 +16,17 @@ import {TextAvatarComponent} from '../components/text-avatar/text-avatar.compone
         CourseListComponent,
         LoadRefsPipe,
         ReversePipe,
-        TextAvatarComponent
+        TextAvatarComponent,
+        CourseDetailComponent,
+        ResourcesComponent
     ],
     imports: [
         CommonModule,
         CoursesRoutingModule,
         MatListModule,
-        MatIconModule
+        MatIconModule,
+        MatTabsModule
     ]
 })
-export class CoursesModule { }
+export class CoursesModule {
+}

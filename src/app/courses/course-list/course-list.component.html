@@ -2,8 +2,7 @@
     <mat-nav-list>
         <ng-container *ngFor="let semester of this.semesters | async | reverse">
             <h3 mat-subheader>{{semester.name}}</h3>
-                <mat-list-item *ngFor="let course of semester.courses | loadRefs | async">
-<!--                    <mat-icon mat-list-icon>note</mat-icon>-->
+            <mat-list-item *ngFor="let course of semester.courses | loadRefs | async" [routerLink]="course.id">
                     <text-avatar *ngIf="course.class" [text]="course.title" mat-list-icon></text-avatar>
                     <h4 mat-line>{{course.title}}</h4>
                     <p mat-line *ngIf="course.class">{{course["class"].id}}</p>

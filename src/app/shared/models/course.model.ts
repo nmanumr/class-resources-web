@@ -1,7 +1,6 @@
 import {DocumentReference} from '@angular/fire/firestore';
-import {Deserializable} from './deserializable.model';
 
-export class Course implements Deserializable {
+export interface ICourse {
     klass: DocumentReference;
     code: string;
     creditHours: string;
@@ -9,9 +8,4 @@ export class Course implements Deserializable {
     semester: DocumentReference;
     teacher: string;
     title: string;
-
-    deserialize(input: any): this {
-        Object.assign(this, input);
-        return this;
-    }
 }
