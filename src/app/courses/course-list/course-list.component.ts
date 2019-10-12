@@ -4,6 +4,7 @@ import {IProfile} from '../../shared/models/profile.model';
 import {ISemester} from '../../shared/models/semester.model';
 import {Observable} from 'rxjs';
 import {BreadcrumbService} from '../../shared/services/breadcrumb.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-course-list',
@@ -14,7 +15,9 @@ export class CourseListComponent implements OnInit {
     profile: IProfile;
     semesters: Observable<ISemester[]>;
 
-    constructor(public profileService: ProfileService, private breadcrumb: BreadcrumbService) {
+    displayedColumns = ['title', 'teacher'];
+
+    constructor(public profileService: ProfileService, private breadcrumb: BreadcrumbService, private router: Router) {
         this.loadProfile();
 
         this.profileService.profileChanges.subscribe(() => this.loadProfile());
@@ -29,13 +32,11 @@ export class CourseListComponent implements OnInit {
         this.breadcrumb.addActions([
             {
                 label: 'Time Table',
-                handler: () => {
-                }
+                handler: () => this.router.navigateByUrl('/dashboard/timetable')
             },
             {
                 label: 'Profile',
-                handler: () => {
-                }
+                handler: () => this.router.navigateByUrl('/dashboard/profile')
             }
         ]);
     }
