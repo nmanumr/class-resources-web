@@ -4,9 +4,14 @@
             <mat-icon>menu</mat-icon>
         </button>
         <app-breadcrumb></app-breadcrumb>
-        <a class="profile-button">
+        <a class="profile-button" [matMenuTriggerFor]="profileMenu">
             <img [src]="this.photoUrl">
         </a>
+
+        <mat-menu #profileMenu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
     </mat-toolbar>
     <mat-progress-bar *ngIf="this.loader.isLoading" mode="indeterminate"></mat-progress-bar>
 

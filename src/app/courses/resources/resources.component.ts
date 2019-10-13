@@ -37,10 +37,18 @@ export class ResourcesComponent implements OnInit {
         return resource.openUrl || `https://drive.google.com/file/d/${resource.driveFileId}/view`;
     }
 
+    selectAll() {
+        // @ts-ignore
+        this.resources.forEach(r => r.selected = true);
+    }
+
     deselectAll() {
-        for(const resource of this.resources){
-            // @ts-ignore
-            resource.selected = false;
-        }
+        // @ts-ignore
+        this.resources.forEach(r => r.selected = false);
+    }
+
+    getSelectedResources() {
+        // @ts-ignore
+        return this.resources.filter(r => !!r.selected);
     }
 }

@@ -1,11 +1,35 @@
 <ng-container *ngIf="this.resources && this.resources.length">
     <table class="mat-table list-table">
         <thead>
-        <tr class="mat-header-row">
+        <tr class="mat-header-row" *ngIf="getSelectedResources().length == 0; else selectedHeader">
             <th class="mat-header-cell mat-sticky">Name</th>
             <th class="mat-header-cell mat-sticky">Uploaded By</th>
-            <th class="mat-header-cell mat-sticky">Updated Date</th>
+            <th class="mat-header-cell mat-sticky">Date</th>
         </tr>
+        <ng-template #selectedHeader>
+            <tr class="mat-header-row">
+                <th class="mat-header-cell mat-sticky" colspan="100%">
+                    <mat-checkbox
+                        [indeterminate]="getSelectedResources().length != resources.length"
+                        [checked]="getSelectedResources().length == resources.length"
+                        (change)="deselectAll()"
+                        color="primary"></mat-checkbox>
+                    <button mat-icon-button [matMenuTriggerFor]="selectionActions" disableRipple>
+                        <mat-icon>arrow_drop_down</mat-icon>
+                    </button>
+                    <mat-menu #selectionActions="matMenu">
+                        <button mat-menu-item (click)="selectAll()">
+                            <span>All</span>
+                        </button>
+                        <button mat-menu-item (click)="deselectAll()">
+                            <span>None</span>
+                        </button>
+                    </mat-menu>
+
+                    <span>{{getSelectedResources().length}} Selected</span>
+                </th>
+            </tr>
+        </ng-template>
         </thead>
         <tbody>
         <ng-container *ngFor="let resource of this.resources">
@@ -13,9 +37,15 @@
                 <td class="mat-subheader-cell" colspan="100%">{{resource.name}}</td>
             </tr>
             <ng-container *ngIf="!resource.isHeading">
-                <tr class="mat-row hoverable" [class.selected]="!!resource['selected']" (contextmenu)="onContextMenu($event, resource)">
+                <tr class="mat-row hoverable" [class.selected]="!!resource['selected']"
+                    (contextmenu)="onContextMenu($event, resource)">
                     <td class="mat-cell flex-center">
-                        <app-file-icon [fileExt]="resource.ext"></app-file-icon>
+                        <div class="icon">
+                            <app-file-icon [fileExt]="resource.ext"></app-file-icon>
+                            <mat-checkbox [checked]="!!resource['selected']"
+                                          (change)="resource['selected'] = $event.checked"
+                                          color="primary"></mat-checkbox>
+                        </div>
                         <span>{{resource.name}}</span>
                     </td>
                     <td class="mat-cell">{{resource.uploadedBy}}</td>

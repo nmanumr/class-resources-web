@@ -33,7 +33,7 @@ import {DashboardModule} from './dashboard/dashboard.module';
         MatCardModule,
 
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule,
+        AngularFirestoreModule.enablePersistence(),
         AngularFireAuthModule,
     ],
     providers: [],

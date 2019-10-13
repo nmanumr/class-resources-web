@@ -16,3 +16,24 @@ app-file-icon {
     background-color: #e8f0fe;
     color: #1967d2;
 }
+
+.list-table .icon {
+    position: relative;
+}
+
+.list-table .icon mat-checkbox {
+    position: absolute;
+    visibility: hidden;
+    left: 10px;
+    top: 10px;
+}
+
+.hoverable:hover .icon mat-checkbox,
+.selected .icon mat-checkbox{
+    visibility: visible;
+}
+
+.hoverable:hover .icon app-file-icon,
+.selected .icon app-file-icon{
+    visibility: hidden;
+}

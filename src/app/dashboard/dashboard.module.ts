@@ -7,7 +7,7 @@ import {
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
-    MatListModule,
+    MatListModule, MatMenuModule,
     MatProgressBarModule,
     MatSidenavModule,
     MatToolbarModule
@@ -31,7 +31,8 @@ import {SharedModule} from '../shared/shared.module';
         MatButtonModule,
         MatDividerModule,
         SharedModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatMenuModule
     ],
 })
 export class DashboardModule {
