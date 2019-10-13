@@ -1,13 +1,54 @@
-<div *ngIf="this.resources && this.resources.length">
-    <mat-nav-list>
-        <ng-container *ngFor="let resource of this.resources; let i = index">
-            <mat-divider *ngIf="resource.isHeading && i != 0"></mat-divider>
-            <h3 *ngIf="resource.isHeading" mat-subheader>{{resource.name}}</h3>
-            <mat-list-item *ngIf="!resource.isHeading">
-                <!--                <text-avatar *ngIf="course.class" [text]="course.title" mat-list-icon></text-avatar>-->
-                <h4 mat-line>{{resource.name}}</h4>
-                <p mat-line>{{resource.date.toDate() | date}}</p>
-            </mat-list-item>
+<ng-container *ngIf="this.resources && this.resources.length">
+    <table class="mat-table list-table">
+        <thead>
+        <tr class="mat-header-row">
+            <th class="mat-header-cell mat-sticky">Name</th>
+            <th class="mat-header-cell mat-sticky">Uploaded By</th>
+            <th class="mat-header-cell mat-sticky">Updated Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let resource of this.resources">
+            <tr class="mat-subheader-row" *ngIf="resource.isHeading">
+                <td class="mat-subheader-cell" colspan="100%">{{resource.name}}</td>
+            </tr>
+            <ng-container *ngIf="!resource.isHeading">
+                <tr class="mat-row hoverable" [class.selected]="!!resource['selected']" (contextmenu)="onContextMenu($event, resource)">
+                    <td class="mat-cell flex-center">
+                        <app-file-icon [fileExt]="resource.ext"></app-file-icon>
+                        <span>{{resource.name}}</span>
+                    </td>
+                    <td class="mat-cell">{{resource.uploadedBy}}</td>
+                    <td class="mat-cell">{{resource.date.toDate() | date}}</td>
+                </tr>
+            </ng-container>
         </ng-container>
-    </mat-nav-list>
+        </tbody>
+    </table>
+</ng-container>
+
+<div style="visibility: hidden; position: fixed;"
+     [style.left]="contextMenuPosition.x"
+     [style.top]="contextMenuPosition.y"
+     [matMenuTriggerFor]="contextMenu">
 </div>
+<mat-menu #contextMenu="matMenu" (closed)="deselectAll()">
+    <ng-template matMenuContent let-resource="resource">
+        <a mat-menu-item [href]="getOpenUrl(resource)" target="_blank">
+            <mat-icon>open_in_new</mat-icon>
+            Open in Tab
+        </a>
+        <button mat-menu-item>
+            <mat-icon>save_alt</mat-icon>
+            Download
+        </button>
+        <button mat-menu-item>
+            <mat-icon>filter_none</mat-icon>
+            Copy Resource Link
+        </button>
+        <button mat-menu-item>
+            <mat-icon fontSet="material-icons-outlined">info</mat-icon>
+            Details
+        </button>
+    </ng-template>
+</mat-menu>

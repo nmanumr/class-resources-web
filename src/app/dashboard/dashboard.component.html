@@ -3,7 +3,10 @@
         <button mat-icon-button (click)="drawer.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
-        <h1 class="app-name">Class Resources</h1>
+        <app-breadcrumb></app-breadcrumb>
+        <a class="profile-button">
+            <img [src]="this.photoUrl">
+        </a>
     </mat-toolbar>
     <mat-progress-bar *ngIf="this.loader.isLoading" mode="indeterminate"></mat-progress-bar>
 
@@ -32,7 +35,6 @@
         </mat-sidenav>
 
         <mat-sidenav-content>
-            <app-breadcrumb></app-breadcrumb>
             <router-outlet></router-outlet>
         </mat-sidenav-content>
     </mat-sidenav-container>

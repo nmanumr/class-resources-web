@@ -12,7 +12,7 @@ export class ProfileService {
     profile: IProfile;
     profileChanges = new EventEmitter();
 
-    constructor(private afs: AngularFirestore, private userService: UserService) {
+    constructor(private afs: AngularFirestore, public userService: UserService) {
     }
 
     loadProfile() {

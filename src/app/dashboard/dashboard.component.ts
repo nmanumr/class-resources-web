@@ -13,6 +13,7 @@ export class DashboardComponent implements OnDestroy {
     mobileQuery: MediaQueryList;
 
     private mobileQueryListener: () => void;
+    photoUrl: string;
 
     constructor(
         changeDetectorRef: ChangeDetectorRef,
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnDestroy {
         this.mobileQuery.addListener(this.mobileQueryListener);
 
         this.profileService.loadProfile();
+        this.photoUrl = this.profileService.userService.getCurrentUser().photoURL;
     }
 
     ngOnDestroy(): void {

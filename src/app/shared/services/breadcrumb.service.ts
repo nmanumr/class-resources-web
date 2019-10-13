@@ -28,18 +28,15 @@ export class BreadcrumbService {
             distinctUntilChanged(),
             map(() => {
                 this.actions = [];
-                console.log('chnaged route');
                 return this.buildBreadCrumb(this.activatedRoute.root);
             })
         ).subscribe(data => {
             this.breadcrumbs = data;
-            console.log(this.breadcrumbs);
             this.breadcrumbsEvents.emit(this.breadcrumbs);
         });
     }
 
     addActions(actions: Action[]) {
-        console.log('added actions');
         this.actions = actions;
         if (this.breadcrumbs.length) {
             this.breadcrumbs[this.breadcrumbs.length - 1].actions = actions;
@@ -69,7 +66,6 @@ export class BreadcrumbService {
             return this.buildBreadCrumb(route.firstChild, nextUrl, breadcrumbs);
         } else {
             breadcrumbs[breadcrumbs.length - 1].url = this.router.url;
-            console.log('udated actions');
             breadcrumbs[breadcrumbs.length - 1].actions = this.actions;
         }
         return breadcrumbs;

@@ -1,25 +1,27 @@
-<div class="toolbar">
-    <ul class="breadcrumb">
+<!--<div class="toolbar">-->
+<div class="breadcrumb">
+    <ng-container *ngFor="let breadcrumb of this.breadcrumbs; let i = index">
+        <ng-container *ngIf="breadcrumb.actions && breadcrumb.actions.length; else anchorLink">
+            <mat-menu #actions="matMenu">
+                <button *ngFor="let action of breadcrumb.actions" mat-menu-item>{{action.label}}</button>
+            </mat-menu>
 
+            <a [matMenuTriggerFor]="actions">
+                <span>{{ breadcrumb.label }}</span>
+                <mat-icon>arrow_drop_down</mat-icon>
+            </a>
+        </ng-container>
 
-        <li *ngFor="let breadcrumb of this.breadcrumbs">
-            <ng-container *ngIf="breadcrumb.actions && breadcrumb.actions.length; else anchorLink">
-                <mat-menu #actions="matMenu">
-                    <button *ngFor="let action of breadcrumb.actions" mat-menu-item>{{action.label}}</button>
-                </mat-menu>
+        <ng-template #anchorLink>
+            <a [routerLink]="breadcrumb.url">{{breadcrumb.label}}</a>
+        </ng-template>
 
-                <a [matMenuTriggerFor]="actions">
-                    {{ breadcrumb.label }}
-                    <mat-icon>arrow_drop_down</mat-icon>
-                </a>
-            </ng-container>
-
-            <ng-template #anchorLink>
-                <a [routerLink]="breadcrumb.url">{{breadcrumb.label}}</a>
-            </ng-template>
-        </li>
-    </ul>
-    <div class="actions">
-
-    </div>
+        <ng-container *ngIf="i != this.breadcrumbs.length - 1">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </ng-container>
+    </ng-container>
 </div>
+<!--    <div class="actions">-->
+
+<!--    </div>-->
+<!--</div>-->

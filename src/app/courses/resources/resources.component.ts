@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {IResource} from '../../shared/models/resource.model';
 import {CourseService} from '../../shared/services/course.service';
+import {MatMenuTrigger} from '@angular/material';
 
 @Component({
     selector: 'app-resources',
@@ -10,6 +11,8 @@ import {CourseService} from '../../shared/services/course.service';
 export class ResourcesComponent implements OnInit {
     @Input() course: string;
     resources: IResource[];
+    @ViewChild(MatMenuTrigger, {static: false}) contextMenu: MatMenuTrigger;
+    contextMenuPosition = {x: '0px', y: '0px'};
 
     constructor(private courseService: CourseService) {
     }
@@ -20,4 +23,24 @@ export class ResourcesComponent implements OnInit {
         });
     }
 
+    onContextMenu(event: MouseEvent, resource) {
+        event.preventDefault();
+        resource.selected = true;
+        console.log(event.clientX, event.clientY);
+        this.contextMenuPosition.x = event.clientX + 'px';
+        this.contextMenuPosition.y = event.clientY + 'px';
+        this.contextMenu.menuData = {resource};
+        this.contextMenu.openMenu();
+    }
+
+    getOpenUrl(resource) {
+        return resource.openUrl || `https://drive.google.com/file/d/${resource.driveFileId}/view`;
+    }
+
+    deselectAll() {
+        for(const resource of this.resources){
+            // @ts-ignore
+            resource.selected = false;
+        }
+    }
 }

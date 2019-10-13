@@ -1,0 +1,18 @@
+table {
+    padding: 0 10px
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    padding: 8px !important;
+}
+
+app-file-icon {
+    margin-right: 10px;
+}
+
+.selected {
+    background-color: #e8f0fe;
+    color: #1967d2;
+}

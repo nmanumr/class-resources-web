@@ -24,7 +24,9 @@
     color: #5f6368;
     background: #ffffff;
     border-bottom: 1px solid #dadce0;
+    display: flex;
 }
+
 
 .is-mobile .toolbar {
     position: fixed;
@@ -33,6 +35,7 @@
 
 h1.app-name {
     margin-left: 8px;
+    flex-grow: 1;
 }
 
 mat-sidenav {
@@ -73,4 +76,27 @@ mat-sidenav {
 .mat-sidenav .mat-list-item.active-link {
     color: #1a73e8;
     background: #e8f0fe;
+}
+
+.profile-button img {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.profile-button {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+
+.profile-button:hover {
+    background-color: rgba(60, 64, 67, 0.08);
+}
+
+app-breadcrumb{
+    flex-grow: 1;
 }

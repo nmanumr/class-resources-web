@@ -3,11 +3,13 @@ import {CommonModule} from '@angular/common';
 import {BreadcrumbComponent} from './components/breadcrumb/breadcrumb.component';
 import {RouterModule} from '@angular/router';
 import {MatIconModule, MatMenuModule} from '@angular/material';
+import { FileIconComponent } from './components/file-icon/file-icon.component';
 
 
 @NgModule({
     declarations: [
-        BreadcrumbComponent
+        BreadcrumbComponent,
+        FileIconComponent,
     ],
     imports: [
         CommonModule,
@@ -16,7 +18,8 @@ import {MatIconModule, MatMenuModule} from '@angular/material';
         MatMenuModule
     ],
     exports: [
-        BreadcrumbComponent
+        BreadcrumbComponent,
+        FileIconComponent
     ]
 })
 export class SharedModule {

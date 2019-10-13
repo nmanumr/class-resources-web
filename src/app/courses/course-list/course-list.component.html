@@ -1,18 +1,19 @@
 <div *ngIf="this.profile">
-    <table class="mat-table">
+    <table class="mat-table list-table">
         <thead>
-        <tr class="mat-header-row">
-            <th class="mat-header-cell mat-sticky">Title</th>
-            <th class="mat-header-cell mat-sticky">Class</th>
-            <th class="mat-header-cell mat-sticky">Teacher</th>
-        </tr>
+            <tr class="mat-header-row">
+                <th class="mat-header-cell mat-sticky">Title</th>
+                <th class="mat-header-cell mat-sticky">Class</th>
+                <th class="mat-header-cell mat-sticky">Teacher</th>
+            </tr>
         </thead>
         <tbody>
         <ng-container *ngFor="let semester of this.semesters | async | reverse">
             <tr class="mat-subheader-row">
                 <td class="mat-subheader-cell" colspan="2">{{semester.name}}</td>
             </tr>
-            <tr class="mat-row hoverable" *ngFor="let course of semester.courses | loadRefs | async" [routerLink]="course.id">
+            <tr class="mat-row hoverable" *ngFor="let course of semester.courses | loadRefs | async"
+                [routerLink]="course.id">
                 <td class="mat-cell flex-center">
                     <div class="avatar">
                         <text-avatar [text]="course.title" mat-list-icon></text-avatar>

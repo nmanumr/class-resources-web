@@ -3,6 +3,8 @@ import {firestore} from 'firebase';
 export interface IResource {
     date: firestore.Timestamp;
     driveFileId: string | null;
+    downloadUrl: string | null;
+    openUrl: string | null;
     ext: string | null;
     isHeading: boolean;
     mimeType: string | null;

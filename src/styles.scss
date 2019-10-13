@@ -57,12 +57,92 @@ app-drawer-layout:not([narrow]) [drawer-toggle] {
     opacity: 0.7;
 }
 
+.mat-sidenav .mat-list-item .mat-ripple {
+    border-radius: 0 25px 25px 0;
+}
 
+
+/* Mat tab issues */
 .centered .mat-tab-labels {
     justify-content: center;
 }
 
+.tab-custom-overflow .mat-tab-body-wrapper {
+    overflow: visible !important;
+}
 
-.mat-sidenav .mat-list-item .mat-ripple {
-    border-radius: 0 25px 25px 0;
+.tab-custom-overflow .mat-tab-body-active {
+    overflow: visible !important;
+}
+
+.tab-custom-overflow .mat-tab-body-content {
+    overflow: visible !important;
+}
+
+/* List Table */
+
+.list-table {
+    width: 100%;
+    border-spacing: 0;
+    position: relative;
+}
+
+.list-table tr.mat-header-row, tr.mat-row {
+    height: 56px;
+}
+
+.list-table td.mat-cell:first-of-type, th.mat-header-cell:first-of-type {
+    padding-left: 10px;
+}
+
+.list-table td.mat-cell:last-of-type, th.mat-header-cell:last-of-type {
+    padding-right: 24px;
+}
+
+.list-table th.mat-header-cell {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.list-table td.mat-cell {
+    padding: 0;
+    border-bottom-width: 0;
+}
+
+.list-table .mat-subheader-cell {
+    line-height: 16px;
+    padding: 10px;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    color: #5f6368;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.list-table .mat-header-cell {
+    font-size: 14px;
+}
+
+.list-table th.mat-header-cell {
+    text-align: left;
+}
+
+.list-table .mat-sticky {
+    top: 0px;
+    position: sticky;
+    z-index: 100;
+    background-color: #fff;
+}
+
+.list-table .hoverable {
+    cursor: pointer;
+}
+
+.list-table .hoverable:hover {
+    background: #f5f5f5;
+}
+
+.list-table .selected {
+    background-color: #e8f0fe;
+    color: #1967d2 !important;
 }
