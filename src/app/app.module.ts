@@ -10,8 +10,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatToolbarModule} from '@angular/material';
-import {AuthModule} from './auth/auth.module';
-import {DashboardModule} from './dashboard/dashboard.module';
+import {AngularFireAuthGuard, AngularFireAuthGuardModule} from '@angular/fire/auth-guard';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -22,9 +22,7 @@ import {DashboardModule} from './dashboard/dashboard.module';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-
-        AuthModule,
-        DashboardModule,
+        HttpClientModule,
 
         MatToolbarModule,
         MatListModule,
@@ -36,7 +34,8 @@ import {DashboardModule} from './dashboard/dashboard.module';
         AngularFirestoreModule.enablePersistence(),
         AngularFireAuthModule,
     ],
-    providers: [],
+    providers: [
+    ],
     bootstrap: [AppComponent],
     schemas: []
 })

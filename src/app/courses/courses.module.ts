@@ -39,7 +39,8 @@ import {SharedModule} from '../shared/shared.module';
         SharedModule,
         MatMenuModule,
         MatButtonModule,
-    ]
+    ],
+    providers: []
 })
 export class CoursesModule {
 }

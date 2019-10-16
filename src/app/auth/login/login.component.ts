@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     form: FormGroup;
     serverError: string;
 
-    private providers = [
+    providers = [
         Provider.GOOGLE,
         Provider.FACEBOOK,
         Provider.GITHUB,
@@ -62,9 +62,12 @@ export class LoginComponent implements OnInit {
     }
 
     async handleProvider(provider: Provider) {
+        this.form.markAsPristine();
         try {
-            console.log(await this.authService.loginWithProvider(provider));
+            await this.authService.loginWithProvider(provider);
+            this.router.navigate([this.returnUrl]);
         } catch (e) {
+            this.serverError = e.message;
             console.log(e);
         }
     }

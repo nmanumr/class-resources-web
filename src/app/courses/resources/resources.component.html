@@ -38,7 +38,7 @@
             </tr>
             <ng-container *ngIf="!resource.isHeading">
                 <tr class="mat-row hoverable" [class.selected]="!!resource['selected']"
-                    (contextmenu)="onContextMenu($event, resource)">
+                    (contextmenu)="onContextMenu($event, resource)" (click)="onContextMenu($event, resource)">
                     <td class="mat-cell flex-center">
                         <div class="icon">
                             <app-file-icon [fileExt]="resource.ext"></app-file-icon>

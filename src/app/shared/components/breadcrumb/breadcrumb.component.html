@@ -13,7 +13,8 @@
         </ng-container>
 
         <ng-template #anchorLink>
-            <a [routerLink]="breadcrumb.url">{{breadcrumb.label}}</a>
+            <a [routerLink]="breadcrumb.url" *ngIf="!breadcrumb.disabled">{{breadcrumb.label}}</a>
+            <a *ngIf="breadcrumb.disabled">{{breadcrumb.label}}</a>
         </ng-template>
 
         <ng-container *ngIf="i != this.breadcrumbs.length - 1">

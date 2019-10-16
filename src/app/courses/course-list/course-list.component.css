@@ -8,3 +8,10 @@ table {
     margin-right: 10px;
     position: relative;
 }
+
+@media (max-width: 750px) {
+    tr th:nth-child(n+2),
+    tr td:nth-child(n+2) {
+        display: none;
+    }
+}

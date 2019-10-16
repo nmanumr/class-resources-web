@@ -37,3 +37,10 @@ app-file-icon {
 .selected .icon app-file-icon{
     visibility: hidden;
 }
+
+@media (max-width: 750px) {
+    tr th:nth-child(n+2),
+    tr td:nth-child(n+2) {
+        display: none;
+    }
+}

@@ -1,4 +1,4 @@
-<button [style.color]="providerColors[provider]" class="capitalize" mat-button>
+<button [style.color]="providerColors[provider]" class="capitalize" mat-button [disabled]="disabled">
     <mat-icon [svgIcon]="provider"></mat-icon>
     {{ provider }}
 </button>

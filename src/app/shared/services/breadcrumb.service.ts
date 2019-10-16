@@ -10,6 +10,7 @@ export interface Action {
 export interface BreadCrumb {
     label: string;
     url: string;
+    disabled: boolean,
     actions?: Action[];
 }
 
@@ -55,7 +56,8 @@ export class BreadcrumbService {
             const label = route.routeConfig.data.breadcrumb || route.routeConfig.data.breadcrumbParser(this.router.url);
             const breadcrumb = {
                 label,
-                url: nextUrl
+                url: nextUrl,
+                disabled: route.routeConfig.data.breadcrumbDisabled || false
             };
             breadcrumbs.push(breadcrumb);
         }

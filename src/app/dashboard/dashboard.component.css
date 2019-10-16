@@ -97,6 +97,6 @@ mat-sidenav {
     background-color: rgba(60, 64, 67, 0.08);
 }
 
-app-breadcrumb{
+app-breadcrumb {
     flex-grow: 1;
 }

@@ -11,8 +11,9 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class ProviderButtonComponent implements OnInit {
 
     @Input() provider: Provider;
+    @Input() disabled: boolean;
 
-    private providerColors = {
+    providerColors = {
         google: '#db4437',
         github: '#000000',
         phone: '#018d5f',

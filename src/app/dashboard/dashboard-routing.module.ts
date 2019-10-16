@@ -1,14 +1,18 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent} from './dashboard.component';
-import {canActivate, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+import {AngularFireAuthGuard} from '@angular/fire/auth-guard';
+import {map} from 'rxjs/operators';
 
-const redirectUnauthorizedToLogin = redirectUnauthorizedTo(['login']);
+const redirectUnauthorizedToLogin = () => map(user => !user ? ['auth/login'] : true );
 
 const routes: Routes = [{
-    path: 'dashboard',
+    path: '',
     component: DashboardComponent,
-    ...canActivate(redirectUnauthorizedToLogin),
+    canActivate: [AngularFireAuthGuard],
+    data: {
+        authGuardPipe: redirectUnauthorizedToLogin,
+    },
     children: [
         {
             path: '',
@@ -20,6 +24,13 @@ const routes: Routes = [{
             loadChildren: () => import('../courses/courses.module').then(m => m.CoursesModule),
             data: {
                 breadcrumb: 'Courses'
+            }
+        },
+        {
+            path: 'timetable',
+            loadChildren: () => import('../timetable/timetable.module').then(m => m.TimetableModule),
+            data: {
+                breadcrumb: 'Timetable'
             }
         }
     ]
