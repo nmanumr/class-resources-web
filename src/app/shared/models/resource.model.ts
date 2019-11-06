@@ -1,6 +1,7 @@
 import {firestore} from 'firebase';
 
 export interface IResource {
+    id?: string;
     date: firestore.Timestamp;
     driveFileId: string | null;
     downloadUrl: string | null;

@@ -1,11 +1,5 @@
-import {Deserializable} from './deserializable.model';
-
-export class Klass implements Deserializable {
+export interface IClass {
     name: string;
-    cr: string;
-
-    deserialize(input: any): this {
-        Object.assign(this, input);
-        return this;
-    }
+    CR: string;
+    id?: string;
 }

@@ -3,13 +3,14 @@ import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent} from './dashboard.component';
 import {AngularFireAuthGuard} from '@angular/fire/auth-guard';
 import {map} from 'rxjs/operators';
+import {UserProfileGuardServiceGuard} from './guards/user-profile-guard.service';
 
 const redirectUnauthorizedToLogin = () => map(user => !user ? ['auth/login'] : true );
 
 const routes: Routes = [{
     path: '',
     component: DashboardComponent,
-    canActivate: [AngularFireAuthGuard],
+    canActivate: [AngularFireAuthGuard, UserProfileGuardServiceGuard],
     data: {
         authGuardPipe: redirectUnauthorizedToLogin,
     },

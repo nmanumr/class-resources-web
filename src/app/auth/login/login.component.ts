@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
         Provider.GOOGLE,
         Provider.FACEBOOK,
         Provider.GITHUB,
-        // Provider.PHONE,
     ];
+    showPass: boolean;
 
     constructor(
         private router: Router,

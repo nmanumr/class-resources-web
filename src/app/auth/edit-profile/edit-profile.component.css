@@ -1,0 +1,38 @@
+:host {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+}
+
+mat-card {
+    max-width: 320px;
+    margin: 20px auto;
+    border-radius: 8px;
+    padding: 40px;
+    overflow: hidden;
+}
+
+mat-card-title,
+mat-card-subtitle {
+    text-align: center;
+}
+
+mat-card-subtitle {
+    margin-bottom: 45px;
+}
+
+mat-error {
+    font-size: 90%;
+    margin-bottom: 20px;
+}
+
+mat-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.full-width {
+    width: 100%;
+}

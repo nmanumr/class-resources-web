@@ -10,8 +10,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatToolbarModule} from '@angular/material';
-import {AngularFireAuthGuard, AngularFireAuthGuardModule} from '@angular/fire/auth-guard';
 import {HttpClientModule} from '@angular/common/http';
+import {AngularFireFunctionsModule, FUNCTIONS_ORIGIN} from '@angular/fire/functions';
 
 
 @NgModule({
@@ -33,6 +33,7 @@ import {HttpClientModule} from '@angular/common/http';
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule.enablePersistence(),
         AngularFireAuthModule,
+        AngularFireFunctionsModule,
     ],
     providers: [
     ],

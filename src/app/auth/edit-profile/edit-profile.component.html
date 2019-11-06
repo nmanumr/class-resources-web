@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+    <mat-card-title>Update Profile</mat-card-title>
+    <mat-card-subtitle>Please provide required information to continue.</mat-card-subtitle>
+
+    <form [formGroup]="form">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Your Name</mat-label>
+            <input formControlName="name" matInput placeholder="Your Name" type="text">
+            <mat-error *ngIf="form.controls.name.touched && form.controls.name.hasError('required')">
+                Name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Roll Number</mat-label>
+            <input formControlName="rollNum" matInput placeholder="rollNum" type="text">
+            <mat-error *ngIf="form.controls.rollNum.errors && !form.controls.rollNum.hasError('required')">
+                Roll Number should be like "AA00-BBB-000"
+            </mat-error>
+            <mat-error *ngIf="form.controls.rollNum.touched && form.controls.rollNum.hasError('required')">
+                Roll Number is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Your Class</mat-label>
+            <mat-select formControlName="klass">
+                <mat-option *ngFor="let klass of classes" [value]="klass.id">
+                    {{klass.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls.klass.touched && form.controls.klass.hasError('required')">
+                Roll Number is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-error *ngIf="serverError">{{ serverError }}</mat-error>
+
+        <button (click)="saveProfile()" [disabled]="!form.valid" color="primary" mat-raised-button type="submit">
+            Save Profile
+        </button>
+    </form>
+</mat-card>

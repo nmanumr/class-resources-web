@@ -36,9 +36,13 @@ export class UserService {
 
     async loginWithEmail(email: string, pass: string): Promise<UserCredential | null> {
         return await this.loginWithProvider(Provider.EmailAndPassword, {
-            email: email,
+            email,
             password: pass
         });
+    }
+
+    async signupWithEmail(email: string, pass: string): Promise<firebase.auth.UserCredential> {
+        return await this.afAuth.auth.createUserWithEmailAndPassword(email, pass);
     }
 
     async loginWithProvider(provider: Provider, credentials?: ICredentials): Promise<UserCredential | any> {

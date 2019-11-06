@@ -15,6 +15,15 @@ export class ProfileService {
     constructor(private afs: AngularFirestore, public userService: UserService) {
     }
 
+    async isProfileExist() {
+        const user = this.userService.getCurrentUser();
+        if (!user) {
+            return false;
+        }
+        const snap = await this.afs.doc(`/users/${user.uid}`).get().toPromise();
+        return snap.exists;
+    }
+
     loadProfile() {
         const user = this.userService.getCurrentUser();
         return this.afs.doc(`/users/${user.uid}`).valueChanges().subscribe(data => {
@@ -26,5 +35,13 @@ export class ProfileService {
     getSemesters(): Observable<ISemester[]> {
         const user = this.userService.getCurrentUser();
         return this.afs.collection<ISemester>(`/users/${user.uid}/semesters`).valueChanges();
+    }
+
+    async updateProfile(name: string, rollNum: string) {
+        const user = this.userService.getCurrentUser();
+        return await this.afs.doc(`/users/${user.uid}`).set({
+            name,
+            rollNum
+        }, {merge: true});
     }
 }

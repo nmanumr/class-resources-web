@@ -14,6 +14,7 @@ import {
 } from '@angular/material';
 import {AngularFireAuthGuardModule} from '@angular/fire/auth-guard';
 import {SharedModule} from '../shared/shared.module';
+import {UserProfileGuardServiceGuard} from './guards/user-profile-guard.service';
 
 
 @NgModule({
@@ -34,6 +35,9 @@ import {SharedModule} from '../shared/shared.module';
         MatProgressBarModule,
         MatMenuModule
     ],
+    providers: [
+        UserProfileGuardServiceGuard
+    ]
 })
 export class DashboardModule {
 }

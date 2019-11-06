@@ -35,6 +35,18 @@ mat-error {
     margin-bottom: 20px;
 }
 
+.headline {
+    font-weight: 600;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+[matSuffix]{
+    font-size: 86%!important;
+    opacity: .9;
+}
+
+
 mat-divider {
     margin: 25px 0 10px;
     position: relative !important;
@@ -60,19 +72,4 @@ mat-divider {
     display: flex;
     position: relative;
     justify-content: center;
-}
-
-.headline {
-    font-weight: 600;
-    font-size: 12px;
-    opacity: 0.7;
-}
-
-[matSuffix]{
-    font-size: 86%!important;
-    opacity: .9;
-}
-
-mat-form-field:hover matSuffix{
-    opacity: .9;
 }

@@ -1,7 +1,7 @@
 <mat-card>
 
     <mat-card-title>Class Resources</mat-card-title>
-    <mat-card-subtitle>Please sign in to your account below.</mat-card-subtitle>
+    <mat-card-subtitle>Provide the required info to create you account</mat-card-subtitle>
 
     <form [formGroup]="form">
         <mat-form-field appearance="outline" class="full-width">
@@ -27,21 +27,34 @@
             </mat-error>
         </mat-form-field>
 
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Confirm Password</mat-label>
+            <input formControlName="password2" matInput placeholder="Password Again" [type]="showPass2 ? 'text' : 'password'"
+                   [errorStateMatcher]="matcher">
+            <button mat-icon-button matSuffix (click)="showPass2 = !showPass2" tabindex="-1">
+                <mat-icon>{{showPass2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+
+            <mat-error *ngIf="form.hasError('notSame')">
+                Passwords do not match
+            </mat-error>
+        </mat-form-field>
+
         <mat-error *ngIf="serverError">{{ serverError }}</mat-error>
 
         <mat-card-footer class="no-account-banner">
             <mat-card-subtitle>
-                Don't have account? Signup <a routerLink="/auth/signup">here</a>
+                Already have account? Login <a routerLink="auth/login">here</a>
             </mat-card-subtitle>
         </mat-card-footer>
 
-        <button (click)="performLogin()" [disabled]="!form.valid" color="primary" mat-raised-button type="submit">
-            Login
+        <button (click)="signup()" [disabled]="!form.valid" color="primary" mat-raised-button type="submit">
+            Signup
         </button>
 
         <mat-divider></mat-divider>
 
-        <h2 class="headline">Login With:</h2>
+        <h2 class="headline">Signup With:</h2>
 
         <div class="provider-buttons">
             <app-provider-button (click)="handleProvider(provider)" *ngFor="let provider of providers"
